@@ -1,18 +1,3 @@
 #!/usr/bin/env bash
 
-# Display listening sockets with PID and program name
-
-# Check if netstat is available
-if command -v netstat &> /dev/null
-then
-    echo "Listing listening sockets with PID and program name using netstat:"
-    sudo netstat -plnt | grep LISTEN
-    sudo netstat -plnu | grep LISTEN
-elif command -v ss &> /dev/null
-then
-    echo "Listing listening sockets with PID and program name using ss:"
-    sudo ss -tuln -p
-else
-    echo "Neither netstat nor ss is installed."
-    exit 1
-fi
+netstat -lp
