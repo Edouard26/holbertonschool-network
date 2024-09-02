@@ -1,9 +1,18 @@
 #!/usr/bin/env bash
-#Change your home IP
+# Change your home IP
 
 HOSTS_FILE="/etc/hosts"
 
+# Backup the current hosts file
+sudo cp "$HOSTS_FILE" "$HOSTS_FILE.bak"
+
+# Add the required entries to the hosts file
 {
     echo "127.0.0.2       localhost"
     echo "8.8.8.8         facebook.com"
-} | sudo tee -a "$HOSTS_FILE" > /dev/null
+} | sudo tee "$HOSTS_FILE" > /dev/null
+
+# Verify the changes using nc (netcat)
+echo -e "\nVerification:"
+echo -e "localhost resolves to: $(nc -zv localhost 80 2>&1 | cut -d' ' -f3)"
+echo -e "facebook.com resolves to: $(nc -zv facebook.com 80 2>&1 | cut -d' ' -f3)"
