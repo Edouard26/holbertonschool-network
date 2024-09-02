@@ -2,9 +2,15 @@
 #Script that change the IP
 
 sudo cp /etc/hosts /etc/hosts.bak
-read -p "127.0.0.2: " new_localhost_ip
-read -p "8.8.8.8: " new_facebook_ip
+
+# Use default values if no input is provided
+new_localhost_ip=${new_localhost_ip:-127.0.0.2}
+new_facebook_ip=${new_facebook_ip:-8.8.8.8}
+
+# Update the hosts file
 {
-    echo "$127.0.0.2       localhost"
-    echo "$8.8.8.8         facebook.com"
-} | sudo tee /etc/hosts > /dev/null
+    echo "$new_localhost_ip localhost"
+    echo "$new_facebook_ip facebook.com"
+} | sudo tee -a /etc/hosts > /dev/null
+
+echo "Hosts file updated. Original file backed up as /etc/hosts.bak"
