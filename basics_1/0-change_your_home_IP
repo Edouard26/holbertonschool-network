@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Change your home IP
+# This script configures the hosts file to resolve localhost to 127.0.0.2 and facebook.com to 8.8.8.8
 
 HOSTS_FILE="/etc/hosts"
 
