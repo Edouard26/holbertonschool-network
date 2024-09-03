@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 # Script that changes the IP
-ifconfig <localhost> <127.0.0.2> 
-ifconfig <facebook.com> <8.8.8.8>
+ifconfig lo 127.0.0.2
+sh -c 'echo "8.8.8.8 facebook.com" >> /etc/hosts'
