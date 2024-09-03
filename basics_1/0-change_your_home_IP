@@ -1,4 +1,10 @@
 #!/usr/bin/env bash
 # Script that changes the IP
-sudo ifconfig <localhost> <127.0.0.2> 
-sudo ifconfig <facebook.com> <8.8.8.8>
+
+# Configurer l'adresse IP de localhost
+sudo ifconfig lo 127.0.0.2
+
+# Ajouter une entrée pour facebook.com dans le fichier hosts
+sudo sh -c 'echo "8.8.8.8 facebook.com" >> /etc/hosts'
+
+echo "Configuration mise à jour : localhost -> 127.0.0.2, facebook.com -> 8.8.8.8"
