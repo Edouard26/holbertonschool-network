@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 # Script that changes the IP
-sudo ifconfig <localhost> <127.0.0.2> 
-sudo ifconfig <facebook.com> <8.8.8.8>
+ifconfig <localhost> <127.0.0.2> 
+ifconfig <facebook.com> <8.8.8.8>
