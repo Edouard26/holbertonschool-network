@@ -1,8 +1,10 @@
 #!/usr/bin/env bash
-# Script that changes the IP
-
-# Change the IP address of the loopback interface to 127.0.0.2
-sudo ifconfig lo 127.0.0.2
-
-# Append '8.8.8.8 facebook.com' to /etc/hosts
-sudo sh -c 'echo "8.8.8.8 facebook.com" >> /etc/hosts'
+# Define the path to the hosts file
+HOSTS_FILE="/etc/hosts"# Backup the existing hosts file
+sudo cp "$HOSTS_FILE" "$HOSTS_FILE.bak"# Add the custom entries to the hosts file
+sudo bash -c "cat <<EOF >> $HOSTS_FILE
+127.0.0.2   localhost
+8.8.8.8     facebook.com
+EOF"# Display the modified hosts file to verify changes
+echo "Modified /etc/hosts:"
+cat "$HOSTS_FILE"
